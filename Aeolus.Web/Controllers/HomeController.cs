@@ -19,10 +19,13 @@ namespace Aeolus.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var start = new DateTime(2018, 11, 1);
-            var end = new DateTime(2018, 11, 2);
-            var stationObservations = await _aeolusApiService.GetStationObservationsForState("vt", start, end);
             return await Task.FromResult(View());
+        }
+
+        public async Task<IActionResult> StationList(string state)
+        {
+            var stations = await _aeolusApiService.GetStationsForState(state);
+            return PartialView("_StationList", stations);
         }
     }
 }

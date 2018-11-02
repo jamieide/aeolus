@@ -3,5 +3,30 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@section Scripts{ 
+    <script defer src="~/js/aeolus.js" asp-append-version="true"></script>
+    <script>
+        var uri = "@Url.Action("", "", null, Context.Request.Scheme)";
+    </script>
+}
 
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <label>State</label>
+            <div class="input-group">
+                <select class="form-control" id="state-list">
+                    <option value="NH">New Hampshire</option>
+                    <option value="VT">Vermont</option>
+                </select>
+                <button class="btn btn-outline-primary" type="button" id="get-station-list">Get Stations</button>
+            </div>
+        </div>
+        <div id="station-list-container"></div>
+    </div>
+    <div class="col">
+        <partial name="_AnalysisOptions"/>
+    </div>
+</div>

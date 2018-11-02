@@ -1,0 +1,10 @@
+﻿@model Aeolus.ApiClient.Station[]
+
+<ul class="list-group" id="station-list">
+    @foreach (var station in Model)
+    {
+        <li class="list-group-item">
+            @station.Identifier @station.Name
+        </li>
+    }
+</ul>
