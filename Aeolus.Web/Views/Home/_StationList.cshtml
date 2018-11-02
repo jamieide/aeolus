@@ -3,7 +3,7 @@
 <ul class="list-group" id="station-list">
     @foreach (var station in Model)
     {
-        <li class="list-group-item">
+        <li class="list-group-item" data-stationid="@station.Identifier">
             @station.Identifier @station.Name
         </li>
     }

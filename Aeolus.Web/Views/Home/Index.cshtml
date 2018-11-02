@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-@section Scripts{ 
+@section Scripts{
     <script defer src="~/js/aeolus.js" asp-append-version="true"></script>
     <script>
         var uri = "@Url.Action("", "", null, Context.Request.Scheme)";
@@ -27,6 +27,7 @@
         <div id="station-list-container"></div>
     </div>
     <div class="col">
-        <partial name="_AnalysisOptions"/>
+        <partial name="_AnalysisOptions" />
+        <div id="analysis-results-container"></div>
     </div>
 </div>

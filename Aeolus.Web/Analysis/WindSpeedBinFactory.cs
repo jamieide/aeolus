@@ -11,6 +11,10 @@ namespace Aeolus.Web.Analysis
         public WindSpeedBin[] Create(StationObservations stationObservations, NormalizeWindSpeedStrategy normalizeWindSpeedStrategy)
         {
             var stationIdentifier = stationObservations.Station.Identifier;
+            if (!stationObservations.Observations.Any())
+            {
+                return new WindSpeedBin[0];
+            }
             var grps = stationObservations.Observations
                 .GroupBy(x => new DateTime(x.Timestamp.Year, x.Timestamp.Month, x.Timestamp.Day, x.Timestamp.Hour, 0, 0, DateTimeKind.Utc));
             var date = grps.Min(x => x.Key);

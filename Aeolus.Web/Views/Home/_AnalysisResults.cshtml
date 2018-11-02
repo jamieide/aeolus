@@ -1,0 +1,34 @@
+﻿@model Aeolus.Web.Analysis.PowerGenerationAnalysis
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Station</th>
+        <td>@Model.Station.Identifier @Model.Station.Name</td>
+    </tr>
+    <tr>
+        <th>Start date</th>
+        <td>@Model.Start.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>End date</th>
+        <td>@Model.End.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Bin count</th>
+        <td>@Model.BinCount</td>
+    </tr>
+    <tr>
+        <th>Average wind speed</th>
+        <td>@Model.AverageWindSpeed.ToString("F3") m/s</td>
+    </tr>
+    <tr>
+        <th>Estimated kW</th>
+        <td>@Model.EstimatedKw.ToString("F2")</td>
+    </tr>
+    <tr>
+        <th>Estimated kWh</th>
+        <td>@Model.EstimatedKwh.ToString("F2")</td>
+    </tr>
+    </tbody>
+</table>

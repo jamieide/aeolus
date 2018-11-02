@@ -13,6 +13,7 @@ namespace Aeolus.Web
         {
             services.AddMvc();
             services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+            services.AddAntiforgery();
 
             services.AddHttpClient<IAeolusApiService, AeolusApiService.AeolusApiService>(client =>
             {

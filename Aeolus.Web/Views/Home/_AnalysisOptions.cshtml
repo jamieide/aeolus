@@ -1,54 +1,48 @@
-﻿<div id="analysis-options" class="invisible">
+﻿@using Aeolus.Web.Analysis
+<div id="analysis-options" class="invisible">
     <fieldset>
         <legend>Analysis options</legend>
         <div class="form-group">
             <label>Start</label>
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" id="start-date" />
         </div>
         <div class="form-group">
             <label>End</label>
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" id="end-date" />
         </div>
-        <label>Wind speed normalization strategy</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="strategy" id="strategy-max" value="max" />
-            <label class="form-check-label" for="strategy-max">Maximum</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="strategy" id="strategy-avg" value="avg" />
-            <label class="form-check-label" for="strategy-avg">Average</label>
-        </div>
-        <label class="mt-2">Turbine diameter (m)</label>
-        <div class="row">
-            <div class="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia40" value="40" />
-                    <label class="form-check-label" for="turbine-dia40">40</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia50" value="50" />
-                    <label class="form-check-label" for="turbine-dia50">50</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia60" value="60"/>
-                    <label class="form-check-label" for="turbine-dia60">60</label>
-                </div>
+        <div class="form-group">
+            <label>Wind speed normalization strategy</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="strategy" id="strategy-max" value="@NormalizeWindSpeedStrategy.MaxWindSpeed" />
+                <label class="form-check-label" for="strategy-max">Maximum</label>
             </div>
-            <div class="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia70" value="70" />
-                    <label class="form-check-label" for="turbine-dia70">70</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia80" value="80" />
-                    <label class="form-check-label" for="turbine-dia80">80</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="turbine-dia" id="turbine-dia90" value="90" />
-                    <label class="form-check-label" for="turbine-dia90">90</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="strategy" id="strategy-avg" value="@NormalizeWindSpeedStrategy.AverageWindSpeed" />
+                <label class="form-check-label" for="strategy-avg">Average</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Air density (&rho;)</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="air-density" value="1.2" />
+                <div class="input-group-append">
+                    <span class="input-group-text">kg/m<sup>3</sup></span>
                 </div>
             </div>
         </div>
-
+        <div class="form-group">
+            <label>Rotor radius</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="rotor-radius" value="30" />
+                <div class="input-group-append">
+                    <span class="input-group-text">m</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Performance coefficient (C<sub>p</sub>)</label>
+            <input type="number" class="form-control" id="performance-coefficient" value="0.35" />
+        </div>
+        <button type="button" class="btn btn-primary" id="get-analysis">Analyze</button>
     </fieldset>
 </div>

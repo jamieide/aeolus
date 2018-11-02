@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Aeolus.Api.Models\Aeolus.Api.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
