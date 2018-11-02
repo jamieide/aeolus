@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Aeolus.Web.AeolusApiService;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,11 @@ namespace Aeolus.Web
         {
             services.AddMvc();
             services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
+            services.AddHttpClient<IAeolusApiService, AeolusApiService.AeolusApiService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:56114");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

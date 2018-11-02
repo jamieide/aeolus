@@ -80,7 +80,7 @@ namespace Aeolus.Api
             return Json(stations);
         }
 
-        [HttpGet("stations/{stationIdentifier:alpha}/observations")]
+        [HttpGet("stations/{stationIdentifier}/observations")]
         public async Task<IActionResult> GetObservations(string stationIdentifier, DateTime start, DateTime end)
         {
             if (end < start)
