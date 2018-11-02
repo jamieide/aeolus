@@ -11,6 +11,7 @@ namespace Aeolus.Api
     {
         Task<Station[]> FindStations(double latitude, double longitude);
         Task<Station> GetStation(string stationIdentifier);
+        Task<Station[]> GetStationsForState(string state);
         Task<Observation[]> GetObservations(string stationIdentifier, DateTime start, DateTime end);
         Task<StationObservations> GetStationObservations(string stationIdentifier, DateTime start, DateTime end);
     }

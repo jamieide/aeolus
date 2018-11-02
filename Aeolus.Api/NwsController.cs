@@ -63,6 +63,23 @@ namespace Aeolus.Api
             return Json(station);
         }
 
+        [HttpGet("stations")]
+        public async Task<IActionResult> GetStationsForState(string state)
+        {
+            if (string.IsNullOrEmpty(state) || state.Length != 2)
+            {
+                ModelState.AddModelError("state", "State must be a two character state code.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var stations = await _nwsClient.GetStationsForState(state);
+            return Json(stations);
+        }
+
         [HttpGet("stations/{stationIdentifier:alpha}/observations")]
         public async Task<IActionResult> GetObservations(string stationIdentifier, DateTime start, DateTime end)
         {

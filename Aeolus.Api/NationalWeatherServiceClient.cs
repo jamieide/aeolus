@@ -78,6 +78,31 @@ namespace Aeolus.Api
             }
         }
 
+        public async Task<Station[]> GetStationsForState(string state)
+        {
+            var uri = $"stations?state={state.ToUpperInvariant()}";
+
+            try
+            {
+                var response = await _httpClient.GetAsync(uri);
+                response.EnsureSuccessStatusCode();
+                dynamic data = JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+                var stations = new List<Station>();
+                foreach (var rawStation in data.features)
+                {
+                    var station = CreateStation(rawStation);
+                    stations.Add(station);
+                }
+
+                return stations.ToArray();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
+
         private static Station CreateStation(dynamic data)
         {
             return new Station()
