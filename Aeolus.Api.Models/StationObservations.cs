@@ -8,13 +8,16 @@ namespace Aeolus.ApiClient
     /// </summary>
     public class StationObservations
     {
+        public StationObservations()
+        { }
+
         public StationObservations(Station station, Observation[] observations)
         {
             Station = station;
             Observations = observations;
         }
 
-        public Station Station { get; }
-        public Observation[] Observations { get; }
+        public Station Station { get; set; }
+        public Observation[] Observations { get; set; }
     }
 }
